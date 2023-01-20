@@ -1,5 +1,4 @@
 from app.database import firebase
-from fastapi.exceptions import HTTPException
 from app.models.constants import collection
 
 def get_user(id: str):

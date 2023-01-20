@@ -7,7 +7,7 @@ def create_user(id: str,username: str, email: str, password: str, age: int, gend
         u'email': u'{email}'.format(email=email),
         u'password': u'{password}'.format(password=password),
         u'age': u'{age}'.format(age=age),
-        u'gender': u'{gender}'.format(gender=gender),
+        u'gender': u'{gender}'.format(gender=str(gender)),
         u'birthday': u'{birthday}'.format(birthday=birthday)
     })
     
@@ -17,6 +17,6 @@ def create_user(id: str,username: str, email: str, password: str, age: int, gend
         'email': '{email}'.format(email=email),
         'password': '{password}'.format(password=password),
         'age': '{age}'.format(age=age),
-        'gender': '{gender}'.format(gender=gender),
+        'gender': '{gender}'.format(gender=str(gender)),
         'birthday': '{birthday}'.format(birthday=birthday)
     }
