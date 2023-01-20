@@ -1,5 +1,5 @@
 from pydantic import BaseModel,validator,Field
-from app.models.gender import Gender
+from typing import Optional
 from fastapi.exceptions import HTTPException
 import re
 
@@ -8,7 +8,7 @@ class User(BaseModel):
     email: str = Field(example="me@tawfiq.dev")
     password: str = Field(example="hkkrne")
     age: int = Field(example=16)
-    gender: Gender = Field(example="male")
+    gender: Optional[str] = "prefer_not_to_say"
     birthday: str = Field(example="19/05/2006")
 
     @validator('username')
@@ -38,5 +38,11 @@ class User(BaseModel):
     @validator("birthday")
     def validate_birthday(cls, v):
         if not re.match("^(0?[1-9]|[12][0-9]|3[01])/(0?[1-9]|1[012])/((19|20)\\d\\d)$", v):
+            raise HTTPException(status_code=422)
+        return v
+
+    @validator("gender")
+    def validate_gender(cls, v):
+        if v not in ("male" , "female" , "prefer_not_to_say"):
             raise HTTPException(status_code=422)
         return v
