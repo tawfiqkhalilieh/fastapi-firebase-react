@@ -116,8 +116,18 @@ const Login = () => {
             </div>
           </form>
         </div>
-        {/* <p className="paragraph"> </p> */}
-        <h3 className="paragraph" onClick={() => setAcativity(false)}>
+        <h3
+          className="paragraph"
+          onClick={() => {
+            [
+              // @ts-ignore
+              email.current.value,
+              // @ts-ignore
+              password.current.value,
+            ] = ["", "", "", "", "", ""];
+            setAcativity(false);
+          }}
+        >
           Click here to signup
         </h3>
       </Fade>
@@ -240,7 +250,26 @@ const Login = () => {
             </div>
           </form>
         </div>
-        <h3 className="paragraph2" onClick={() => setAcativity(true)}>
+        <h3
+          className="paragraph2"
+          onClick={() => {
+            [
+              // @ts-ignore
+              email.current.value,
+              // @ts-ignore
+              password.current.value,
+              // @ts-ignore
+              username.current.value,
+              // @ts-ignore
+              age.current.value,
+              // @ts-ignore
+              birthday.current.value,
+              // @ts-ignore
+              gender.current.value,
+            ] = ["", "", "", "", "", ""];
+            setAcativity(true);
+          }}
+        >
           Click here to login
         </h3>
       </div>
